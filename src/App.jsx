@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import SearchForm from "./components/SearchForm";
-import Dashboard from "./components/Dashboard";
+import SearchForm from "./components/searchform.jsx";
+import Dashboard from "./components/dashboard.jsx";
 
 export default function App() {
   const [results, setResults] = useState([]);
@@ -16,7 +16,7 @@ export default function App() {
     setError("");
     try {
       const res = await fetch(
-        `http://localhost:3000/results?keyword=${searchKeyword}&page=${pageNum}&limit=10`
+        `https://searchserver-production.up.railway.app/results?keyword=${searchKeyword}&page=${pageNum}&limit=10`
       );
       if (!res.ok) throw new Error("Failed to fetch results");
       const data = await res.json();
